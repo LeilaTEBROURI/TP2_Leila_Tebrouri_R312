@@ -14,7 +14,7 @@ Projet réalisé pour les TP1 et TP2 de **Développement Front et Intégration**
 - composant réutilisable `PlotFigure.astro` rendu côté serveur avec JSDOM ;
 - composant `GraphicSpecies.astro` partagé entre les pages Adelie, Gentoo et Chinstrap ;
 - visualisations du jeu de données Palmer Penguins avec Observable Plot ;
-- trois modes de navigation : pages séparées, iframe et slider horizontal à ancres ;
+- deux modes de navigation : pages séparées et slider horizontal à ancres ;
 - détection du graphique actif avec `IntersectionObserver` et styles Tailwind conditionnés par `.active` ;
 - JSON allégé aux colonnes réellement utilisées ;
 - titres, légendes, descriptions et libellés pour l’accessibilité ;
@@ -39,7 +39,8 @@ npm run preview
 ## Pages du TP2
 
 - `/species/Adelie`, `/species/Gentoo` et `/species/Chinstrap` : une page par graphique avec menu partagé ;
-- `/iframe` : chargement des trois pages dans une iframe unique ;
+- `/autres-graphiques` : accès aux exemples Régression et Waffle ;
+- `/regression/[cylinders]` et `/waffle/[topic]` : pages générées avec `getStaticPaths()` pour les filtres voitures et sondages ;
 - `/slider` : trois graphiques dans un slider CSS piloté par des ancres, avec entrée active observée en JavaScript.
 
 ## Déploiement
@@ -47,7 +48,7 @@ npm run preview
 1. Publier ce dossier dans un dépôt GitHub.
 2. Dans Netlify, choisir **Add new site → Import an existing project**.
 3. Sélectionner le dépôt GitHub. Netlify utilisera `npm run build` et publiera `dist` grâce à `netlify.toml`. Le site étant entièrement statique, aucune Edge Function n’est nécessaire.
-4. Reporter l’URL obtenue dans la section Auteur de ce fichier.
+4. Fournir l’URL obtenue dans le rendu Moodle ; son ajout dans ce README est facultatif.
 
 ## Accessibilité
 
