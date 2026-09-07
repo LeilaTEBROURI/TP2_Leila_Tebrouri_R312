@@ -1,0 +1,35 @@
+---
+import Layout from "../layouts/Layout.astro";
+const examples = [
+  { name: "Simpson", href: "/examples/Simpson", number: "01", color: "#67e0bd", description: "Une régression pour comparer les tendances par groupe et la tendance globale." },
+  { name: "Waffle", href: "/examples/Waffle", number: "02", color: "#ffca58", description: "Un sondage de cent réponses représenté par une grille de cent cases." },
+];
+---
+<Layout title="Autres graphiques — TP2" description="Choisir entre les exemples Simpson et Waffle réalisés avec Observable Plot.">
+  <main id="contenu" class="mx-auto min-h-screen w-full max-w-[1240px] px-[clamp(1.25rem,5vw,4rem)] py-6">
+    <nav class="flex items-center justify-between text-xs tracking-[.14em] uppercase" aria-label="Navigation principale">
+      <a class="grid size-10 place-items-center rounded-full border border-mint font-serif text-xl font-bold no-underline" href="/" aria-label="Accueil du TP2">P.</a>
+      <a class="text-mist no-underline hover:text-mint" href="/">Retour à l’accueil</a>
+    </nav>
+    <header class="grid min-h-[58vh] content-center py-20">
+      <p class="mb-4 text-xs font-bold tracking-[.2em] text-mint uppercase">TP2 · Autres exemples Plot</p>
+      <h1 class="m-0 max-w-[960px] font-serif text-[clamp(3.8rem,9vw,8rem)] leading-[.95] font-normal tracking-[-.055em]">Deux exemples.<br /><em class="font-normal text-mint">Deux pages.</em></h1>
+      <p class="mt-9 max-w-[650px] text-[clamp(1rem,2vw,1.2rem)] leading-relaxed text-mist">Choisissez un exemple pour découvrir son graphique sur une page dédiée, comme pour les trois espèces de manchots.</p>
+    </header>
+    <section class="border-t border-[#29404b] py-[clamp(4rem,8vw,7rem)]" aria-labelledby="examples-title">
+      <p class="mb-3 text-xs font-bold tracking-[.18em] text-mint uppercase">Une page par graphique</p>
+      <h2 id="examples-title" class="mb-12 font-serif text-[clamp(2.6rem,5vw,4.8rem)] leading-none font-normal tracking-[-.045em]">Choisir un exemple</h2>
+      <div class="grid gap-4 md:grid-cols-2">
+        {examples.map((item) => (
+          <a href={item.href} class="group flex min-h-[320px] flex-col rounded-2xl border border-[#29404b] bg-[rgba(10,37,52,.65)] p-7 text-white no-underline transition duration-300 hover:-translate-y-2 hover:border-mint">
+            <span class="text-xs tracking-[.18em] text-[#8fa8af]">{item.number}</span>
+            <span class="my-auto font-serif text-[clamp(2.8rem,5vw,5rem)] tracking-[-.04em]" style={`color:${item.color}`}>{item.name}</span>
+            <span class="max-w-[25rem] text-sm leading-relaxed text-mist">{item.description}</span>
+            <span class="mt-5 self-end text-2xl text-mint transition group-hover:translate-x-1" aria-hidden="true">→</span>
+          </a>
+        ))}
+      </div>
+    </section>
+    <footer class="flex flex-col justify-between gap-2 border-t border-[#29404b] py-8 text-xs tracking-[.08em] text-[#78909c] uppercase sm:flex-row"><p>TP_Dev_Front_integration</p><p>Leila_Tebrouri_MMI2_B1</p></footer>
+  </main>
+</Layout>
