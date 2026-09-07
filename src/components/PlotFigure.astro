@@ -1,9 +1,29 @@
 ---
 import * as Plot from "@observablehq/plot";
 import { JSDOM } from "jsdom";
-const { options } = Astro.props;
 
-const plot = Plot.plot({ ...options, document: new JSDOM("").window.document });
+const { options, labelledby, describedby } = Astro.props;
+
+const document = new JSDOM("").window.document;
+const plot = Plot.plot({ ...options, document });
+
+if (labelledby) plot.setAttribute("aria-labelledby", labelledby);
+if (describedby) plot.setAttribute("aria-describedby", describedby);
 ---
 
-<div set:html={plot.outerHTML} />
+<div class="plot" set:html={plot.outerHTML} />
+
+<style>
+  .plot {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .plot :global(svg),
+  .plot :global(figure) {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-inline: auto;
+  }
+</style>

@@ -1,0 +1,28 @@
+---
+const { current } = Astro.props;
+const species = ["Adelie", "Gentoo", "Chinstrap"];
+---
+
+<nav class="species-nav" aria-label="Choisir une espèce">
+  <a href="/" class="home-link">Vue d’ensemble</a>
+  <div>
+    {species.map((name) => (
+      <a
+        href={`/species/${name}`}
+        aria-current={current === name ? "page" : undefined}
+        class:list={{ active: current === name }}
+      >
+        {name}
+      </a>
+    ))}
+  </div>
+</nav>
+
+<style>
+  .species-nav { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding-bottom: 2rem; }
+  .species-nav div { display: flex; gap: .5rem; flex-wrap: wrap; }
+  .species-nav a { color: #b8cad0; border: 1px solid #29404b; border-radius: 999px; padding: .65rem 1rem; text-decoration: none; font-size: .82rem; }
+  .species-nav a:hover, .species-nav a.active { color: #061724; background: #67e0bd; border-color: #67e0bd; }
+  .home-link { border-color: transparent !important; padding-left: 0 !important; }
+  @media (max-width: 650px) { .species-nav { align-items: flex-start; flex-direction: column; } }
+</style>

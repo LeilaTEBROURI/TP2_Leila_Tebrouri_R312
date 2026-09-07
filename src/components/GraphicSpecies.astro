@@ -1,0 +1,67 @@
+---
+import * as Plot from "@observablehq/plot";
+import penguins from "../data/penguins.json";
+import PlotFigure from "./PlotFigure.astro";
+
+const { species } = Astro.props;
+const allowedSpecies = ["Adelie", "Gentoo", "Chinstrap"];
+
+if (!allowedSpecies.includes(species)) {
+  throw new Error(`Espèce inconnue : ${species}`);
+}
+
+const penguinsSpecies = penguins.filter((penguin) => penguin.species === species);
+const palette = { Adelie: "#67e0bd", Gentoo: "#8da9ff", Chinstrap: "#ffca58" };
+const chartId = `chart-${species.toLowerCase()}`;
+const descriptionId = `${chartId}-description`;
+
+const options = {
+  width: 820,
+  height: 510,
+  marginLeft: 60,
+  marginBottom: 56,
+  ariaLabel: `Nuage de points des manchots ${species} comparant la longueur et la profondeur du bec.`,
+  x: { label: "Longueur du bec (mm) →", grid: true },
+  y: { label: "↑ Profondeur du bec (mm)", grid: true },
+  marks: [
+    Plot.frame({ stroke: "#55717a" }),
+    Plot.dot(penguinsSpecies, {
+      x: "culmen_length_mm",
+      y: "culmen_depth_mm",
+      fill: palette[species],
+      stroke: "#061724",
+      r: 6,
+      tip: true,
+      title: (d) => `${species} · bec ${d.culmen_length_mm} × ${d.culmen_depth_mm} mm`,
+    }),
+    Plot.linearRegressionY(penguinsSpecies, {
+      x: "culmen_length_mm",
+      y: "culmen_depth_mm",
+      stroke: palette[species],
+      strokeWidth: 2,
+    }),
+  ],
+};
+---
+
+<section class="species-graphic" aria-labelledby={chartId}>
+  <div class="heading">
+    <p class="eyebrow">FICHE ESPÈCE · {String(penguinsSpecies.length).padStart(3, "0")} INDIVIDUS</p>
+    <h1 id={chartId}>{species}</h1>
+    <p id={descriptionId}>Relation entre la longueur et la profondeur du bec. La droite représente la tendance moyenne observée.</p>
+  </div>
+  <figure class="chart-card">
+    <PlotFigure options={options} labelledby={chartId} describedby={descriptionId} />
+    <figcaption>{penguinsSpecies.length} observations complètes pour l’espèce {species}.</figcaption>
+  </figure>
+</section>
+
+<style>
+  .species-graphic { display: grid; grid-template-columns: minmax(220px, .65fr) minmax(0, 1.35fr); align-items: start; gap: clamp(2rem, 6vw, 6rem); padding-block: clamp(3rem, 8vw, 7rem); border-top: 1px solid #29404b; }
+  .eyebrow { color: #67e0bd; font-size: .74rem; font-weight: 750; letter-spacing: .16em; }
+  h1 { margin: .8rem 0 1.5rem; font: 400 clamp(4rem, 9vw, 8rem)/.95 Georgia, serif; letter-spacing: -.05em; }
+  .heading > p:last-child { color: #a9bec4; line-height: 1.7; max-width: 30rem; }
+  .chart-card { margin: 0; padding: clamp(1rem, 2.2vw, 2rem); border: 1px solid #29404b; border-radius: 1rem; background: rgba(10, 37, 52, .72); }
+  figcaption { color: #8fa8af; font-size: .78rem; padding-top: 1rem; border-top: 1px solid #29404b; }
+  @media (max-width: 760px) { .species-graphic { grid-template-columns: 1fr; } }
+</style>

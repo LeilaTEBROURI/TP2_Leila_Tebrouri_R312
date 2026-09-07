@@ -1,0 +1,17 @@
+---
+import Layout from "./Layout.astro";
+import SpeciesNav from "../components/SpeciesNav.astro";
+
+const { species } = Astro.props;
+---
+
+<Layout title={`${species} — Palmer Penguins`} description={`Visualisation des manchots ${species} avec Observable Plot.`}>
+  <main>
+    <SpeciesNav current={species} />
+    <slot />
+  </main>
+</Layout>
+
+<style>
+  main { width: min(1160px, calc(100% - 2.5rem)); margin-inline: auto; padding-block: 1.5rem 4rem; }
+</style>

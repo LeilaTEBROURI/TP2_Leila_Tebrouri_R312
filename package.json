@@ -1,19 +1,21 @@
 {
-  "name": "base-astro-tw-plot",
+  "name": "astro-observable-plot-penguins",
+  "version": "1.0.0",
+  "private": true,
   "type": "module",
-  "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
+    "data": "node scripts/filter-penguins.mjs",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/netlify": "^8.2.3",
-    "@observablehq/plot": "^0.6.17",
+    "@astrojs/netlify": "latest",
+    "@observablehq/plot": "latest",
     "@tailwindcss/vite": "^4.3.3",
-    "astro": "^7.2.4",
-    "jsdom": "^30.0.1",
+    "astro": "latest",
+    "jsdom": "latest",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {

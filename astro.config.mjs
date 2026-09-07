@@ -1,15 +1,12 @@
-// @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from "astro/config";
+import tailwindcss from "@tailwindcss/vite";
 
-import tailwindcss from '@tailwindcss/vite';
-
-import netlify from '@astrojs/netlify';
-
-// https://astro.build/config
+// Le projet est entièrement statique : Netlify publie directement `dist`.
+// `@astrojs/netlify` reste installé comme demandé par le sujet, mais son
+// adaptateur SSR n'est pas activé afin de ne pas lancer Edge Functions en local.
 export default defineConfig({
+  output: "static",
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
   },
-
-  adapter: netlify()
 });

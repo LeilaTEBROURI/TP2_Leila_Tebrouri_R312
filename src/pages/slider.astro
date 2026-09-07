@@ -1,0 +1,53 @@
+---
+import Layout from "../layouts/Layout.astro";
+import GraphicSpecies from "../components/GraphicSpecies.astro";
+---
+
+<Layout title="Slider à ancres — Palmer Penguins" description="Trois graphiques dans un slider horizontal piloté par des ancres.">
+  <main>
+    <a class="back" href="/">← Retour à l’accueil</a>
+    <header>
+      <p class="eyebrow">TP2 · MÉTHODE 03</p>
+      <h1>Faire défiler<br /><em>les espèces.</em></h1>
+      <p>Le menu utilise des ancres HTML. Le graphique visible est détecté par IntersectionObserver et son lien devient actif.</p>
+    </header>
+
+    <nav class="sticky-menu" aria-label="Graphiques du slider">
+      <a class="menu-item active [&.active]:bg-mint [&.active]:text-ink [&.active]:border-mint" href="#adelie" aria-current="true">01 · Adelie</a>
+      <a class="menu-item [&.active]:bg-mint [&.active]:text-ink [&.active]:border-mint" href="#gentoo">02 · Gentoo</a>
+      <a class="menu-item [&.active]:bg-mint [&.active]:text-ink [&.active]:border-mint" href="#chinstrap">03 · Chinstrap</a>
+    </nav>
+
+    <div class="slider" aria-label="Graphiques par espèce">
+      <article class="item" id="adelie"><GraphicSpecies species="Adelie" /></article>
+      <article class="item" id="gentoo"><GraphicSpecies species="Gentoo" /></article>
+      <article class="item" id="chinstrap"><GraphicSpecies species="Chinstrap" /></article>
+    </div>
+    <p class="hint" aria-hidden="true">← Faites glisser horizontalement →</p>
+  </main>
+</Layout>
+
+<script>
+  import "../scripts/slider-observer";
+</script>
+
+<style>
+  main { width: min(1240px, calc(100% - 2.5rem)); margin-inline: auto; padding-block: 2rem 5rem; }
+  .back { display: inline-block; margin-bottom: clamp(3rem, 7vw, 6rem); color: #b8cad0; text-decoration: none; }
+  header { max-width: 800px; }
+  .eyebrow { color: #67e0bd; font-size: .75rem; font-weight: 750; letter-spacing: .18em; }
+  h1 { margin: .8rem 0 1.5rem; font: 400 clamp(3.5rem, 8vw, 7rem)/.96 Georgia, serif; letter-spacing: -.05em; }
+  h1 em { color: #67e0bd; font-weight: 400; }
+  header > p:last-child { color: #b8cad0; line-height: 1.7; font-size: 1.08rem; }
+  .sticky-menu { position: sticky; top: 0; z-index: 5; display: flex; gap: .65rem; padding-block: 1.25rem; margin-top: 4rem; background: rgba(6, 23, 36, .92); backdrop-filter: blur(12px); border-top: 1px solid #29404b; }
+  .menu-item { padding: .7rem 1.1rem; color: #b8cad0; border: 1px solid #36505b; border-radius: 999px; text-decoration: none; transition: color .2s, background-color .2s, border-color .2s; }
+  .slider { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-color: #67e0bd #102c3a; border-radius: 1rem; }
+  .item { min-width: 100%; scroll-snap-align: start; scroll-snap-stop: always; padding-inline: clamp(.25rem, 2vw, 1.5rem); }
+  .hint { text-align: center; color: #78929a; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+  @media (max-width: 620px) {
+    .sticky-menu { overflow-x: auto; }
+    .menu-item { white-space: nowrap; }
+    .item { padding-inline: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { .slider { scroll-behavior: auto; } }
+</style>
