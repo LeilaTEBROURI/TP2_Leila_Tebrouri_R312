@@ -1,11 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
 const examples = [
-  { name: "Simpson", href: "/examples/Simpson", number: "01", color: "#67e0bd", description: "Une régression pour comparer les tendances par groupe et la tendance globale." },
-  { name: "Waffle", href: "/examples/Waffle", number: "02", color: "#ffca58", description: "Un sondage de cent réponses représenté par une grille de cent cases." },
+  { name: "Régression", href: "/examples/Simpson", number: "01", color: "#67e0bd", description: "Une régression pour comparer le poids et la puissance de différents modèles automobiles." },
+  { name: "Waffle", href: "/examples/Waffle", number: "02", color: "#ffca58", description: "Un waffle chart qui compare les quantités de quatre fruits." },
 ];
 ---
-<Layout title="Autres graphiques — TP2" description="Choisir entre les exemples Simpson et Waffle réalisés avec Observable Plot.">
+<Layout title="Autres graphiques — TP2" description="Choisir entre les exemples Regression et Waffle réalisés avec Observable Plot.">
   <main id="contenu" class="mx-auto min-h-screen w-full max-w-[1240px] px-[clamp(1.25rem,5vw,4rem)] py-6">
     <nav class="flex items-center justify-between text-xs tracking-[.14em] uppercase" aria-label="Navigation principale">
       <a class="grid size-10 place-items-center rounded-full border border-mint font-serif text-xl font-bold no-underline" href="/" aria-label="Accueil du TP2">P.</a>
@@ -21,7 +21,7 @@ const examples = [
       <h2 id="examples-title" class="mb-12 font-serif text-[clamp(2.6rem,5vw,4.8rem)] leading-none font-normal tracking-[-.045em]">Choisir un exemple</h2>
       <div class="grid gap-4 md:grid-cols-2">
         {examples.map((item) => (
-          <a href={item.href} class="group flex min-h-[320px] flex-col rounded-2xl border border-[#29404b] bg-[rgba(10,37,52,.65)] p-7 text-white no-underline transition duration-300 hover:-translate-y-2 hover:border-mint">
+          <a href={item.href} class="group flex min-h-[320px] flex-col rounded-2xl border border-[#29404b] bg-panel p-7 text-white no-underline transition duration-300 hover:-translate-y-2 hover:border-mint">
             <span class="text-xs tracking-[.18em] text-[#8fa8af]">{item.number}</span>
             <span class="my-auto font-serif text-[clamp(2.8rem,5vw,5rem)] tracking-[-.04em]" style={`color:${item.color}`}>{item.name}</span>
             <span class="max-w-[25rem] text-sm leading-relaxed text-mist">{item.description}</span>

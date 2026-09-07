@@ -1,0 +1,11 @@
+[
+  {"topic":"developpement-web","label":"Développement web","answer":"Oui","count":68},
+  {"topic":"developpement-web","label":"Développement web","answer":"Peut-être","count":21},
+  {"topic":"developpement-web","label":"Développement web","answer":"Non","count":11},
+  {"topic":"design-interface","label":"Design d’interface","answer":"Oui","count":54},
+  {"topic":"design-interface","label":"Design d’interface","answer":"Peut-être","count":31},
+  {"topic":"design-interface","label":"Design d’interface","answer":"Non","count":15},
+  {"topic":"datavisualisation","label":"Datavisualisation","answer":"Oui","count":72},
+  {"topic":"datavisualisation","label":"Datavisualisation","answer":"Peut-être","count":19},
+  {"topic":"datavisualisation","label":"Datavisualisation","answer":"Non","count":9}
+]

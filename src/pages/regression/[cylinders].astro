@@ -1,0 +1,14 @@
+---
+import * as Plot from "@observablehq/plot";
+import Layout from "../../layouts/Layout.astro";
+import PlotFigure from "../../components/PlotFigure.astro";
+import cars from "../../data/cars.json";
+export function getStaticPaths() {
+  return [4, 6, 8].map((cylinders) => ({ params: { cylinders: String(cylinders) }, props: { cylinders } }));
+}
+const { cylinders } = Astro.props;
+const filteredCars = cars.filter((car) => car.cylinders === cylinders);
+const colors = {4:"#67e0bd",6:"#8da9ff",8:"#ffca58"};
+const options = {width:820,height:500,marginLeft:65,marginBottom:58,ariaLabel:`Régression du poids et de la puissance des voitures à ${cylinders} cylindres.`,x:{label:"Poids (lb) →",grid:true},y:{label:"↑ Puissance (hp)",grid:true},marks:[Plot.frame({stroke:"#55717a"}),Plot.dot(filteredCars,{x:"weight",y:"power",fill:colors[cylinders],stroke:"#061724",r:8,tip:true,title:(d)=>`${d.model} · ${d.weight} lb · ${d.power} hp`}),Plot.linearRegressionY(filteredCars,{x:"weight",y:"power",stroke:colors[cylinders],strokeWidth:3})]};
+---
+<Layout title={`${cylinders} cylindres — Régression`} description={`Graphique filtré des voitures à ${cylinders} cylindres.`}><main id="contenu" class="mx-auto min-h-screen w-full max-w-[1240px] px-[clamp(1.25rem,5vw,4rem)] py-6"><nav class="flex flex-wrap items-center justify-between gap-4 text-xs uppercase"><a class="text-mist no-underline" href="/examples/Regression">← Régression</a><div class="flex gap-2">{[4,6,8].map((value)=><a class:list={["rounded-full border px-4 py-2 no-underline", value===cylinders ? "border-mint bg-mint text-ink" : "border-[#36505b] text-mist"]} href={`/regression/${value}`}>{value} cylindres</a>)}</div></nav><header class="grid min-h-[42vh] content-center py-16"><p class="text-xs font-bold tracking-[.2em] text-mint uppercase">Filtre · {filteredCars.length} voitures</p><h1 class="m-0 font-serif text-[clamp(3.6rem,8vw,7rem)] font-normal leading-none">Voitures à <em class="text-mint">{cylinders} cylindres.</em></h1></header><section class="grid gap-10 border-t border-[#29404b] py-16 lg:grid-cols-[.65fr_1.5fr]" aria-labelledby="plot-title"><div><h2 id="plot-title" class="font-serif text-5xl font-normal">Poids et puissance</h2><p id="plot-desc" class="leading-relaxed text-mist">Le tableau automobile a été filtré avec <code>cars.filter()</code> pour ne conserver que les modèles à {cylinders} cylindres.</p></div><figure class="m-0 rounded-2xl border border-[#29404b] bg-panel p-6"><PlotFigure options={options} labelledby="plot-title" describedby="plot-desc" /><figcaption class="mt-5 border-t border-[#29404b] pt-4 text-xs text-[#8fa8af]">{filteredCars.length} modèles dans cette catégorie.</figcaption></figure></section></main></Layout>

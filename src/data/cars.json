@@ -1,0 +1,17 @@
+[
+  {"model":"Mazda RX4","weight":2620,"power":110,"cylinders":6},
+  {"model":"Mazda RX4 Wag","weight":2875,"power":110,"cylinders":6},
+  {"model":"Datsun 710","weight":2320,"power":93,"cylinders":4},
+  {"model":"Hornet 4 Drive","weight":3215,"power":110,"cylinders":6},
+  {"model":"Hornet Sportabout","weight":3440,"power":175,"cylinders":8},
+  {"model":"Valiant","weight":3460,"power":105,"cylinders":6},
+  {"model":"Duster 360","weight":3570,"power":245,"cylinders":8},
+  {"model":"Merc 240D","weight":3190,"power":62,"cylinders":4},
+  {"model":"Merc 230","weight":3150,"power":95,"cylinders":4},
+  {"model":"Merc 280","weight":3440,"power":123,"cylinders":6},
+  {"model":"Merc 450SE","weight":4070,"power":180,"cylinders":8},
+  {"model":"Lotus Europa","weight":1513,"power":113,"cylinders":4},
+  {"model":"Ford Pantera L","weight":3170,"power":264,"cylinders":8},
+  {"model":"Maserati Bora","weight":3570,"power":335,"cylinders":8},
+  {"model":"Volvo 142E","weight":2780,"power":109,"cylinders":4}
+]

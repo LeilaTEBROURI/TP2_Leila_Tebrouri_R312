@@ -31,7 +31,7 @@ const species = [
       <h2 id="species-title" class="mb-12 font-serif text-[clamp(2.6rem,5vw,4.8rem)] leading-none font-normal tracking-[-.045em]">Choisir une espèce</h2>
       <div class="grid gap-4 md:grid-cols-3">
         {species.map((item) => (
-          <a href={`/species/${item.name}`} class="group flex min-h-[300px] flex-col rounded-2xl border border-[#29404b] bg-[rgba(10,37,52,.65)] p-6 text-white no-underline transition duration-300 hover:-translate-y-2 hover:border-mint">
+          <a href={`/species/${item.name}`} class="group flex min-h-[300px] flex-col rounded-2xl border border-[#29404b] bg-panel p-6 text-white no-underline transition duration-300 hover:-translate-y-2 hover:border-mint">
             <span class="text-xs tracking-[.18em] text-[#8fa8af]">{item.number}</span>
             <span class="my-auto font-serif text-[clamp(2.4rem,4vw,4rem)] tracking-[-.04em]" style={`color:${item.color}`}>{item.name}</span>
             <span class="max-w-[15rem] text-sm leading-relaxed text-mist">{item.description}</span>
@@ -52,7 +52,7 @@ const species = [
     <section class="grid gap-8 border-t border-[#29404b] py-[clamp(4rem,8vw,7rem)] md:grid-cols-[1fr_auto] md:items-end">
       <div>
         <p class="mb-3 text-xs font-bold tracking-[.18em] text-mint uppercase">03 · Autres exemples</p>
-        <h2 class="m-0 max-w-[700px] font-serif text-[clamp(2.6rem,5vw,4.8rem)] leading-none font-normal tracking-[-.045em]">Simpson et waffle sur une page dédiée.</h2>
+        <h2 class="m-0 max-w-[700px] font-serif text-[clamp(2.6rem,5vw,4.8rem)] leading-none font-normal tracking-[-.045em]">Regression et waffle sur une page dédiée.</h2>
       </div>
       <a href="/autres-graphiques" class="inline-flex rounded-full bg-mint px-6 py-4 font-bold text-ink no-underline hover:bg-[#a4f2dc]">Voir les deux graphiques →</a>
     </section>
